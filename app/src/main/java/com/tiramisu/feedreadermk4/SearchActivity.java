@@ -37,7 +37,7 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
     RecyclerView recyclerView;
     int i;
     Thread searchThreadInstance, streamThreadInstance;
-    //Git
+    //Test Commit
     List<SearchResult> searchResults = new ArrayList<SearchResult>();
     List<StreamResult> streamResults = new ArrayList<StreamResult>();
     SearchResultAdapter searchAdapter;
