@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="4dp"
+    app:cardCornerRadius="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="2dp">
+
+        <ImageView
+            android:id="@+id/podThumbnail"
+            android:layout_width="68dp"
+            android:layout_height="68dp" />
+
+        <TextView
+            android:id="@+id/podTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/podPP"
+            android:layout_toRightOf="@id/podThumbnail"
+            android:paddingBottom="6dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="6dp" />
+
+        <ImageButton
+            android:id="@+id/podPP"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/card_background"
+            android:src="@drawable/podcast_play_68dp" />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

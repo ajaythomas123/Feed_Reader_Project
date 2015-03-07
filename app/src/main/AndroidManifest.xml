@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tiramisu.feedreadermk4" >
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".SubscriptionActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/search_title" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tiramisu.feedreadermk4.SubscriptionActivity" />
+        </activity>
+        <activity
+            android:name=".DownloadsActivity"
+            android:label="@string/title_activity_downloads" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tiramisu.feedreadermk4.SubscriptionActivity" />
+        </activity>
+    </application>
+
+</manifest>

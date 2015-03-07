@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FeedReaderMk4</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu">Opened</string>
+    <string name="drawer_open">Drawer Opened</string>
+    <string name="drawer_close">Drawer Closed</string>
+    <string name="search_title">Search</string>
+    <string name="subscriptions_title">Subscriptions</string>
+    <string name="downloads_title">Downloads</string>
+    <string name="title_activity_downloads">DownloadsActivity</string>
+
+</resources>
