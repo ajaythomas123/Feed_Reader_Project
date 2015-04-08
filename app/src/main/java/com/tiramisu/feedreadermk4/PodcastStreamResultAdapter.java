@@ -67,7 +67,6 @@ public class PodcastStreamResultAdapter extends RecyclerView.Adapter<PodcastStre
         public void onClick(View v) {
             if(clickListener != null){
                 clickListener.podEntryClicked(v, getPosition());
-
             }
         }
     }

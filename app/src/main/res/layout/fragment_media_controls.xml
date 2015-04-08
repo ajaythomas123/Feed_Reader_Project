@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="72dp"
+    android:background="@color/card_background"
+    android:layout_alignParentBottom="true">
+    
+    <ImageButton
+        android:id="@+id/mpCon_playPause"
+        android:src="@drawable/podcast_play_68dp"
+        android:background="@color/card_background"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:scaleType="centerInside"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+    <ImageButton
+        android:id="@+id/mpCon_stop"
+        android:src="@drawable/podcast_stop_68dp"
+        android:background="@color/card_background"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerInside"
+        android:layout_toLeftOf="@id/mpCon_playPause"
+        android:layout_marginRight="8dp"
+        android:layout_centerVertical="true"/>
+
+    <ImageButton
+        android:id="@+id/mpCon_download"
+        android:src="@drawable/podcast_download_68dp"
+        android:background="@color/card_background"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerInside"
+        android:layout_toRightOf="@id/mpCon_playPause"
+        android:layout_marginLeft="8dp"
+        android:layout_centerVertical="true"/>
+
+
+</RelativeLayout>

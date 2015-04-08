@@ -11,5 +11,6 @@
     <string name="subscriptions_title">Subscriptions</string>
     <string name="downloads_title">Downloads</string>
     <string name="title_activity_downloads">DownloadsActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

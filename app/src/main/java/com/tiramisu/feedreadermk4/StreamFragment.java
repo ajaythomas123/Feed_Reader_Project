@@ -1,5 +1,6 @@
 package com.tiramisu.feedreadermk4;
 
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -45,12 +48,13 @@ public class StreamFragment extends Fragment implements ClickListener {
     String conVisual;
     String conEnclosure;
     String conAlternate;
-    public MediaPlayer mediaPlayer;
+    public MediaPlayer mediaPlayer = null;
     public int playerStatus = 0;
     int i;
     Thread streamThreadInstance;
     RecyclerView recyclerView;
     boolean flag = true;
+    ImageButton playPause;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -221,8 +225,52 @@ public class StreamFragment extends Fragment implements ClickListener {
     @Override
     public void podEntryClicked(View view, int position) {
         String st = streamResults.get(position).getEnContent();
-        MediaPlayerTask mediaPlayerTask = new MediaPlayerTask();
-        mediaPlayerTask.execute(st);
+
+
+
+        MediaControlsFragment mediaControlsFragment = new MediaControlsFragment();
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        Bundle args = new Bundle();
+        args.putString("enContent", st);
+        mediaControlsFragment.setArguments(args);
+        transaction.add(R.id.activity_layout, mediaControlsFragment, "medCon");
+        transaction.addToBackStack("AddMedCon");
+        transaction.commit();
+
+
+
+        //MediaPlayerTask mediaPlayerTask = new MediaPlayerTask();
+        //mediaPlayerTask.execute(st);
+
+/*
+        playPause = (ImageButton) view.findViewById(R.id.podPP);
+        if(mediaPlayer == null){
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        }
+        try {
+            if(!mediaPlayer.isPlaying()){
+                if(playerStatus == 0) {
+                    mediaPlayer.setDataSource(st);
+                    mediaPlayer.prepare();
+                    playerStatus = 1;
+
+                    playPause.setImageResource(R.drawable.podcast_pause_68dp);
+                    Log.d("PlayerStatus", "0");
+                }
+                Log.d("PlayerStatus", "1");
+                mediaPlayer.start();
+            }
+            else{
+                mediaPlayer.pause();
+                playerStatus =2;
+                playPause.setImageResource(R.drawable.podcast_play_68dp);
+                Log.d("PlayerStatus", "2");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
 
 
     }

@@ -5,4 +5,5 @@
     <color name="accentColor">#FFFFFF</color>
     <color name="white_background">#FFFFFF</color>
     <color name="card_background">#FAFAFA</color>
+    <color name="light_red_progress">#EF5350</color>
 </resources>
