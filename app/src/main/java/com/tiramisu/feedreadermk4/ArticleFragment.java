@@ -1,5 +1,7 @@
 package com.tiramisu.feedreadermk4;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,20 +15,28 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 /**
  * Created by ASUS on 23-01-2015.
  */
-public class ArticleFragment extends Fragment {
+public class ArticleFragment extends Fragment implements View.OnClickListener{
 CardView cView;
+    String itemUrl;
+    ImageButton shareButton, browserButton;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_article, container, false);
         TextView titleText = (TextView) view.findViewById(R.id.title_text);
         TextView contentText = (TextView) view.findViewById(R.id.content_text);
+        shareButton = (ImageButton) view.findViewById(R.id.article_share_button);
+        itemUrl = this.getArguments().getString("itemUrl");
+        browserButton = (ImageButton) view.findViewById(R.id.article_browser_button);
         String content = getArguments().getString("content");
+        shareButton.setOnClickListener(this);
+        browserButton.setOnClickListener(this);
         contentText.setMovementMethod(new ScrollingMovementMethod());
         URLImageParser p = new URLImageParser(contentText, getActivity());
         Spanned htmlSpan = Html.fromHtml(content+"\n", p, null);
@@ -36,5 +46,20 @@ CardView cView;
         cView.setZ((float) 20);
         //contentText.setText(Html.fromHtml(content));
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.article_browser_button){
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(itemUrl));
+            startActivity(i);
+        }
+
+        if(v.getId() == R.id.article_share_button){
+            Intent i = new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            startActivity(i);
+        }
     }
 }

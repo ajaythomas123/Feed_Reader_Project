@@ -9,4 +9,5 @@ public interface ClickListener {
     public void itemClicked(View view, int position);
     public void entryClicked(View view, int position);
     public void podEntryClicked(View view, int position);
+    public void subscribe(View view, int position);
 }

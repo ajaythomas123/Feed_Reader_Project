@@ -13,6 +13,9 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -39,7 +42,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by ASUS on 17-01-2015.
  */
-public class StreamFragment extends Fragment implements ClickListener {
+public class StreamFragment extends Fragment implements ClickListener, View.OnClickListener {
     List<StreamResult> streamResults = new ArrayList<StreamResult>();
     StreamResultAdapter streamAdapter;
     PodcastStreamResultAdapter podcastStreamAdapter;
@@ -54,13 +57,14 @@ public class StreamFragment extends Fragment implements ClickListener {
     Thread streamThreadInstance;
     RecyclerView recyclerView;
     boolean flag = true;
-    ImageButton playPause;
+    ImageButton playPause, subscribe;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_stream, container, false);
         recyclerView = (RecyclerView) layout.findViewById(R.id.frag_recycler_view);
-
+        //subscribe = (ImageButton) getActivity().findViewById(R.id.subscribe_button);
+        //subscribe.setVisibility(View.VISIBLE);
         String contentType = this.getArguments().getString("contentType");
         if (contentType.equals("audio")) {
             Log.d("Podcast", "yay");
@@ -80,6 +84,7 @@ public class StreamFragment extends Fragment implements ClickListener {
         String streamId = this.getArguments().getString("streamId");
         Log.d("Frag", " " + streamId);
         startStreamThread(streamId);
+        //subscribe.setOnClickListener(this);
         return layout;
     }
 
@@ -275,6 +280,16 @@ public class StreamFragment extends Fragment implements ClickListener {
 
     }
 
+    @Override
+    public void subscribe(View view, int position) {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(getActivity(), "hello", Toast.LENGTH_SHORT).show();
+    }
+
     public class streamThread implements Runnable {
         String streamId;
 
@@ -310,5 +325,14 @@ public class StreamFragment extends Fragment implements ClickListener {
         toolbar.setTitle("");
         SearchView searchView = (SearchView) getActivity().findViewById(R.id.search_widget);
         searchView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        getActivity().getMenuInflater().inflate(R.menu.menu_search, menu);
+        MenuItem item = menu.add(Menu.NONE, R.id.action_subscribe,Menu.NONE,"Subscribe");
+        item.setIcon(R.drawable.podcast_download_white_24dp);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

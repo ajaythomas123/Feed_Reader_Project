@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">FeedReaderMk4</string>
+    <string name="app_name">NewsPod</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="action_subscribe">Subscribe</string>
     <string name="menu">Opened</string>
     <string name="drawer_open">Drawer Opened</string>
     <string name="drawer_close">Drawer Closed</string>
     <string name="search_title">Search</string>
     <string name="subscriptions_title">Subscriptions</string>
-    <string name="downloads_title">Downloads</string>
+    <string name="downloads_title">About</string>
     <string name="title_activity_downloads">DownloadsActivity</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="project_by_head">Project By:</string>
+    <string name="my_name">Ajay Thomas</string>
+    <string name="semester_branch">S8 CSE</string>
+    <string name="project_guide">Project Guide:</string>
+    <string name="guide_name">Ms. Neena Alex (Asst. Professor, Dept. of CSE)</string>
+    <string name="project_coordinator">Project Coordinator</string>
+    <string name="coordinator_name">Mr. Sarju S. (Asst. Professor, Dept. of CSE)</string>
 
 </resources>

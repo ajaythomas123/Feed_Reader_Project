@@ -5,8 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -57,21 +59,30 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         TextView title;
         TextView subscribers;
         ImageView sIcon;
+        ImageButton subscribeButton;
 
         public SearchViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.title_text);
             subscribers = (TextView) itemView.findViewById(R.id.sub_text);
             sIcon = (ImageView) itemView.findViewById(R.id.thumbnail);
+            subscribeButton = (ImageButton) itemView.findViewById(R.id.subscribe_button);
+            subscribeButton.setOnClickListener(this);
             itemView.setOnClickListener(this);
+
         }
 
         @Override
         public void onClick(View v) {
-            if (clickListener != null)
-                clickListener.itemClicked(v, getPosition());
-
+            if (clickListener != null) {
+                if (v.getId() == R.id.subscribe_button) {
+                    clickListener.subscribe(v, getPosition());
+                } else
+                    clickListener.itemClicked(v, getPosition());
+            }
         }
+
+
     }
 
     /*public interface ClickListener {

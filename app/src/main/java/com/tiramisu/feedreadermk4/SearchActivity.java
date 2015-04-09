@@ -1,6 +1,8 @@
 package com.tiramisu.feedreadermk4;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +29,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -245,6 +251,31 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
 
     @Override
     public void podEntryClicked(View view, int position) {
+
+    }
+
+    @Override
+    public void subscribe(View view, int position) {
+        //Toast.makeText(this, searchResults.get(position).title, Toast.LENGTH_SHORT).show();
+        SharedPreferences sharedPreferences = getSharedPreferences("Subscriptions", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String[] subFeed = new String[5];
+        int subCounter = 0;
+        subCounter = sharedPreferences.getInt("subCounter", 0);
+        subCounter = subCounter + 1;
+        subFeed[0] = searchResults.get(position).feedId;
+        subFeed[1] = searchResults.get(position).title;
+        subFeed[2] = searchResults.get(position).description;
+        subFeed[3] = searchResults.get(position).contentType;
+        subFeed[4] = searchResults.get(position).subscribers;
+        editor.putInt("subCounter", subCounter);
+        editor.putString("feedId" + Integer.valueOf(subCounter).toString(), subFeed[0]);
+        editor.putString("title" + Integer.valueOf(subCounter).toString(), subFeed[1]);
+        editor.putString("description" + Integer.valueOf(subCounter).toString(), subFeed[2]);
+        editor.putString("contentType" + Integer.valueOf(subCounter).toString(), subFeed[3]);
+        editor.putString("subscribers" + Integer.valueOf(subCounter).toString(), subFeed[4]);
+        editor.commit();
+        Toast.makeText(this, "Subscribed!", Toast.LENGTH_SHORT).show();
 
     }
 

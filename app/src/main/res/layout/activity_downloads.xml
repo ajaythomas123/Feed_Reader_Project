@@ -7,7 +7,82 @@
         android:id="@+id/app_bar"
         layout="@layout/app_bar" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/app_bar"
+        android:padding="8dp">
 
+        <TextView
+            android:id="@+id/studCordHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/project_by_head"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+        <TextView
+            android:id="@+id/studCord1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/my_name"
+            android:layout_below="@id/studCordHead"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+        <TextView
+            android:id="@+id/studCord2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/semester_branch"
+            android:layout_below="@id/studCord1"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <TextView
+            android:id="@+id/staffCordHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/project_guide"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_below="@id/studCord2"/>
+        <TextView
+            android:id="@+id/staffCord1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/guide_name"
+            android:layout_below="@id/staffCordHead"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <TextView
+            android:id="@+id/asthraEmailHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/project_coordinator"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_below="@id/staffCord1"/>
+        <TextView
+            android:id="@+id/asthraEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/coordinator_name"
+            android:layout_below="@id/asthraEmailHead"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+
+
+    </RelativeLayout>
 </RelativeLayout>
 
 
