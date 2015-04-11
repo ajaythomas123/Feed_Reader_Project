@@ -1,6 +1,8 @@
 package com.tiramisu.feedreadermk4;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,8 +18,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by ASUS on 23-01-2015.
@@ -59,6 +63,7 @@ CardView cView;
         if(v.getId() == R.id.article_share_button){
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_TEXT, itemUrl);
             startActivity(i);
         }
     }

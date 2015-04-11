@@ -1,5 +1,7 @@
 package com.tiramisu.feedreadermk4;
 
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -62,6 +65,21 @@ public class StreamFragment extends Fragment implements ClickListener, View.OnCl
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_stream, container, false);
+
+        String acTitle = "hi";
+        try {
+            ActivityInfo activityInfo = getActivity().getPackageManager().getActivityInfo(getActivity().getComponentName(), PackageManager.GET_META_DATA);
+            acTitle = activityInfo.name.toString();
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) layout.getLayoutParams();
+
+        //Toast.makeText(getActivity(), acTitle, Toast.LENGTH_SHORT).show();
+        if(acTitle.equals("com.tiramisu.feedreadermk4.SubscriptionActivity")){
+            params.setMargins(0, 0, 0, 0);
+        }
+
         recyclerView = (RecyclerView) layout.findViewById(R.id.frag_recycler_view);
         //subscribe = (ImageButton) getActivity().findViewById(R.id.subscribe_button);
         //subscribe.setVisibility(View.VISIBLE);
